@@ -9,7 +9,7 @@ import Foundation
 
 public struct RowingAdditionalStrokeData:CharacteristicModel
 {
-    static let dataLength:Int = 15
+    public static let dataLength:Int = 15
     
     
     public let elapsedTime:C2TimeInterval
@@ -19,7 +19,7 @@ public struct RowingAdditionalStrokeData:CharacteristicModel
     public let projectedWorkTime:C2TimeInterval
     public let projectedWorkDistance:C2Distance
     
-    init( bytes:[UInt8] )
+    public init( bytes:[UInt8] )
     {
         elapsedTime = C2TimeInterval( timeWithLow:UInt32( bytes[ 0 ] ), mid:UInt32( bytes[ 1 ] ), high:UInt32( bytes[ 2 ] ) )
         strokePower = C2Power( powerWithLow:UInt16( bytes[ 3 ] ), high:UInt16( bytes[ 4 ] ) )

@@ -9,10 +9,10 @@ import Foundation
 
 public struct DeviceInformationManufacturerName:CharacteristicModel
 {
-    static var dataLength:Int = 16
+    public static var dataLength:Int = 16
     
-    let manufacturerName:String
-    init( bytes:[UInt8] )
+    public let manufacturerName:String
+    public init( bytes:[UInt8] )
     {
         if let value = String.init( bytes:bytes, encoding:.utf8 )
         {

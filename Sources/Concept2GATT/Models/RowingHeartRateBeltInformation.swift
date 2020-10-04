@@ -9,13 +9,13 @@ import Foundation
 
 public struct RowingHeartRateBeltInformation:CharacteristicModel
 {
-    static let dataLength:Int = 6
+    public static let dataLength:Int = 6
     
     public let manufacturerID:C2HeartRateBeltManufacturerID
     public let deviceType:C2HeartRateBeltType
     public let beltID:C2HeartRateBeltID
     
-    init( bytes:[UInt8] )
+    public init( bytes:[UInt8] )
     {
         manufacturerID = C2HeartRateBeltManufacturerID( bytes[ 0 ] )
         deviceType = C2HeartRateBeltType( bytes[ 1 ] )

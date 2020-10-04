@@ -30,7 +30,7 @@ public enum Characteristics:String,CharacteristicDefinition
     case rowing_heartRateBeltInformation        = "CE06003B-43E5-11E4-916C-0800200C9A66"
 
     
-    var characteristic:CBUUID
+    public var characteristic:CBUUID
     {
         return CBUUID.init( string:rawValue )
     }
@@ -76,7 +76,7 @@ public enum Characteristics:String,CharacteristicDefinition
         }
     }
     
-    func model( with characteristicValue:Data )->CharacteristicModel
+    public func model( with characteristicValue:Data )->CharacteristicModel
     {
         switch self
         {

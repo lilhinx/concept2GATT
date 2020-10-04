@@ -10,7 +10,7 @@ import Foundation
 
 public struct RowingAdditionalStatus1:CharacteristicModel
 {
-    static let dataLength:Int = 17
+    public static let dataLength:Int = 17
     
     public let elapsedTime:C2TimeInterval
     public let speed:C2Speed
@@ -22,7 +22,7 @@ public struct RowingAdditionalStatus1:CharacteristicModel
     public let restTime:C2TimeInterval
     public let machineType:ErgMachineType?
     
-    init( bytes:[UInt8] )
+    public init( bytes:[UInt8] )
     {
         elapsedTime = C2TimeInterval( timeWithLow:UInt32( bytes[ 0 ] ), mid:UInt32( bytes[ 1 ] ), high:UInt32( bytes[ 2 ] ) )
         speed = C2Speed( speedWithLow:UInt16( bytes[ 3 ] ), high:UInt16( bytes[ 4 ] ) )

@@ -9,11 +9,10 @@ import Foundation
 
 public struct DeviceInformationMachineType:CharacteristicModel
 {
-    static var dataLength:Int = 1
+    public static var dataLength:Int = 1
     
-    let machineType:ErgMachineType
-    
-    init( bytes:[UInt8] )
+    public let machineType:ErgMachineType
+    public init( bytes:[UInt8] )
     {
         machineType = ErgMachineType.with( byte:bytes[ 0 ] )
     }

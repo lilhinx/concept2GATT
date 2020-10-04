@@ -9,10 +9,10 @@ import Foundation
 
 public struct DeviceInformationSerialNumber:CharacteristicModel
 {
-    static var dataLength:Int = 9
+    public static var dataLength:Int = 9
   
-    let serialNumber:String
-    init( bytes:[UInt8] )
+    public let serialNumber:String
+    public init( bytes:[UInt8] )
     {
         if let value = String.init( bytes:bytes, encoding:.utf8 )
         {

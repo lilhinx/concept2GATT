@@ -8,7 +8,7 @@
 import CoreBluetooth
 
 
-protocol CharacteristicDefinition:CaseIterable,CustomStringConvertible
+public protocol CharacteristicDefinition:CaseIterable,CustomStringConvertible
 {
     var characteristic:CBUUID{ get }
     func model( with data:Data )->CharacteristicModel

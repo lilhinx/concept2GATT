@@ -9,11 +9,10 @@ import Foundation
 
 public struct RowingStatusSampleRate:CharacteristicModel
 {
-    static let dataLength:Int = 1
+    public static let dataLength:Int = 1
     
-    let sampleRate:RowingStatusSampleRateType
-    
-    init( bytes:[UInt8] )
+    public let sampleRate:RowingStatusSampleRateType
+    public init( bytes:[UInt8] )
     {
         sampleRate = RowingStatusSampleRateType.with( byte:bytes[ 0 ] )
     }

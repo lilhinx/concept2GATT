@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol CharacteristicModel
+public protocol CharacteristicModel
 {
     static var dataLength:Int{ get }
     init( bytes:[UInt8] )

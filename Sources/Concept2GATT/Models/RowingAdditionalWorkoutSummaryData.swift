@@ -9,7 +9,7 @@ import Foundation
 
 public struct RowingAdditionalWorkoutSummaryData:CharacteristicModel
 {
-    static var dataLength:Int = 19
+    public static var dataLength:Int = 19
     
     public let logEntryDate:C2Date
     public let logEntryTime:C2Time
@@ -22,7 +22,7 @@ public struct RowingAdditionalWorkoutSummaryData:CharacteristicModel
     public let intervalRestTime:C2TimeInterval
     public let averageCalories:C2CalorieCount
     
-    init( bytes:[UInt8] )
+    public init( bytes:[UInt8] )
     {
         logEntryDate = 0 // TODO: find date/time format
         logEntryTime = 0

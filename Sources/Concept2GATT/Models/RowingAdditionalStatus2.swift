@@ -9,7 +9,7 @@ import Foundation
 
 public struct RowingAdditionalStatus2:CharacteristicModel
 {
-    static let dataLength:Int = 20
+    public static let dataLength:Int = 20
     
     public let elapsedTime:C2TimeInterval
     public let intervalCount:C2IntervalCount
@@ -21,7 +21,7 @@ public struct RowingAdditionalStatus2:CharacteristicModel
     public let lastSplitTime:C2TimeInterval
     public let lastSplitDistance:C2Distance
     
-    init( bytes:[UInt8] )
+    public init( bytes:[UInt8] )
     {
         elapsedTime = C2TimeInterval( timeWithLow:UInt32( bytes[ 0 ] ), mid:UInt32( bytes[ 1 ] ), high:UInt32( bytes[ 2 ] ) )
         intervalCount = C2IntervalCount( bytes[ 3 ] )

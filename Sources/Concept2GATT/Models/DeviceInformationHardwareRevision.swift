@@ -9,10 +9,10 @@ import Foundation
 
 public struct DeviceInformationHardwareRevision:CharacteristicModel
 {
-    static var dataLength:Int = 3
+    public static var dataLength:Int = 3
     
-    let hardwareRevision:String
-    init( bytes:[UInt8] )
+    public let hardwareRevision:String
+    public init( bytes:[UInt8] )
     {
         if let value = String.init( bytes:bytes, encoding:.utf8 )
         {

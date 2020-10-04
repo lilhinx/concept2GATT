@@ -9,7 +9,7 @@ import Foundation
 
 public struct RowingGeneralStatus:CharacteristicModel
 {
-    static let dataLength:Int = 19
+    public static let dataLength:Int = 19
     
     public let elapsedTime:C2TimeInterval
     public let distance:C2Distance
@@ -23,7 +23,7 @@ public struct RowingGeneralStatus:CharacteristicModel
     public let workoutDurationType:WorkoutDurationType
     public let dragFactor:C2DragFactor
     
-    init( bytes:[UInt8] )
+    public init( bytes:[UInt8] )
     {
         elapsedTime = C2TimeInterval( timeWithLow:UInt32( bytes[ 0 ] ), mid:UInt32( bytes[ 1 ] ), high:UInt32( bytes[ 2 ] ) )
         distance = C2Distance( distanceWithLow:UInt32( bytes[ 3 ] ), mid:UInt32( bytes[ 4 ] ), high:UInt32( bytes[ 5 ] ) )
