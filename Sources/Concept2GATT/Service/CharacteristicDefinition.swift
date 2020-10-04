@@ -8,7 +8,7 @@
 import CoreBluetooth
 
 
-protocol CharacteristicDefinition:CustomStringConvertible
+protocol CharacteristicDefinition:CaseIterable,CustomStringConvertible
 {
     var characteristic:CBUUID{ get }
 }
