@@ -7,12 +7,13 @@
 
 import Foundation
 
-public enum WorkoutDurationType:Int,CustomStringConvertible
+public enum WorkoutDurationType:UInt8,C2Enum,CustomStringConvertible
 {
     case timeDuration = 0
     case caloriesDuration = 0x40
     case distanceDuration = 0x80
     case wattsDuration = 0xC0
+    case unknown = 255
 
     public var description:String
     {
@@ -26,6 +27,17 @@ public enum WorkoutDurationType:Int,CustomStringConvertible
             return "Distance duration"
         case .wattsDuration:
             return "Watts duration"
+        default:
+            return "unknown"
         }
+    }
+    
+    static func with( byte:UInt8 )->WorkoutDurationType
+    {
+        guard let value = WorkoutDurationType.init( rawValue:byte ) else
+        {
+            return .unknown
+        }
+        return value
     }
 }

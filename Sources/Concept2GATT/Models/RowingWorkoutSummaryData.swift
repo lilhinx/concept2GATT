@@ -22,7 +22,7 @@ public struct RowingWorkoutSummaryData:CharacteristicModel
     public let maximumHeartRate:C2HeartRate
     public let dragFactorAverage:C2DragFactor
     public let recoveryHeartRate:C2HeartRate
-    public let workoutType:WorkoutType?
+    public let workoutType:WorkoutType
     public let averagePace:C2Pace
     
     init( bytes:[UInt8] )
@@ -38,7 +38,7 @@ public struct RowingWorkoutSummaryData:CharacteristicModel
         maximumHeartRate = C2HeartRate( bytes[14 ] )
         dragFactorAverage = C2DragFactor( bytes[ 15 ] )
         recoveryHeartRate = C2HeartRate( bytes[ 16 ] )
-        workoutType = WorkoutType( rawValue:Int( bytes[ 17 ] ) )
+        workoutType = WorkoutType.with( byte:bytes[ 17 ] )
         averagePace = C2Pace(paceWithLow:UInt16( bytes[ 18 ] ), high:UInt16( bytes[ 19 ] ) )
     }
     

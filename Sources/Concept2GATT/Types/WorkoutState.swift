@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum WorkoutState:Int,CustomStringConvertible
+public enum WorkoutState:UInt8,C2Enum,CustomStringConvertible
 {
     case waitToBegin = 0
     case workoutRow
@@ -23,6 +23,7 @@ public enum WorkoutState:Int,CustomStringConvertible
     case terminate
     case workoutLogged
     case rearm
+    case unknown = 255
     
     public var description:String
     {
@@ -56,6 +57,17 @@ public enum WorkoutState:Int,CustomStringConvertible
             return "Workout Logged"
         case .rearm:
             return "Rearm"
+        default:
+            return "unknown"
         }
+    }
+    
+    static func with( byte:UInt8 )->WorkoutState
+    {
+        guard let value = WorkoutState.init( rawValue:byte ) else
+        {
+            return .unknown
+        }
+        return value
     }
 }

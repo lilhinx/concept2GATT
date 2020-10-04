@@ -9,13 +9,13 @@ import CoreBluetooth
 
 public enum Characteristics:String,CharacteristicDefinition
 {
+    case deviceInformation_modelNumber          = "CE060011-43E5-11E4-916C-0800200C9A66"
     case deviceInformation_serialNumber         = "CE060012-43E5-11E4-916C-0800200C9A66"
     case deviceInformation_hardwareRevision     = "CE060013-43E5-11E4-916C-0800200C9A66"
     case deviceInformation_firmwareRevision     = "CE060014-43E5-11E4-916C-0800200C9A66"
     case deviceInformation_manufacturerName     = "CE060015-43E5-11E4-916C-0800200C9A66"
-    
-    case control_command                        = "CE060021-43E5-11E4-916C-0800200C9A66"
-    case control_response                       = "CE060022-43E5-11E4-916C-0800200C9A66"
+    case deviceInformation_machineType          = "CE060016-43E5-11E4-916C-0800200C9A66"
+
     
     case rowing_generalStatus                   = "CE060031-43E5-11E4-916C-0800200C9A66"
     case rowing_additionalStatus1               = "CE060032-43E5-11E4-916C-0800200C9A66"
@@ -28,7 +28,7 @@ public enum Characteristics:String,CharacteristicDefinition
     case rowing_workoutSummaryData              = "CE060039-43E5-11E4-916C-0800200C9A66"
     case rowing_additionalWorkoutSummaryData    = "CE06003A-43E5-11E4-916C-0800200C9A66"
     case rowing_heartRateBeltInformation        = "CE06003B-43E5-11E4-916C-0800200C9A66"
-    case rowing_mutliplexedInformation          = "CE060080-43E5-11E4-916C-0800200C9A66"
+
     
     var characteristic:CBUUID
     {
@@ -39,6 +39,8 @@ public enum Characteristics:String,CharacteristicDefinition
     {
         switch self
         {
+        case .deviceInformation_modelNumber:
+            return "Model Number"
         case .deviceInformation_serialNumber:
             return "Serial Number"
         case .deviceInformation_hardwareRevision:
@@ -47,10 +49,8 @@ public enum Characteristics:String,CharacteristicDefinition
             return "Firmware Revision"
         case .deviceInformation_manufacturerName:
             return "Manufacturer Name"
-        case .control_command:
-            return "Command"
-        case .control_response:
-            return "Response"
+        case .deviceInformation_machineType:
+            return "Machine Type"
         case .rowing_generalStatus:
             return "General Status"
         case .rowing_additionalStatus1:
@@ -73,8 +73,83 @@ public enum Characteristics:String,CharacteristicDefinition
             return "Additional Workout Summary Data"
         case .rowing_heartRateBeltInformation:
             return "Heart Rate Belt Information"
-        case .rowing_mutliplexedInformation:
-            return "Mutliplexed Information"
         }
     }
+    
+    func model( with characteristicValue:Data )->CharacteristicModel
+    {
+        switch self
+        {
+        
+        case .deviceInformation_modelNumber:
+            
+            return DeviceInformationModelNumber.init( characteristicValue:characteristicValue )
+        
+        case .deviceInformation_serialNumber:
+            
+            return DeviceInformationSerialNumber.init( characteristicValue:characteristicValue )
+        
+        case .deviceInformation_hardwareRevision:
+            
+            return DeviceInformationHardwareRevision.init( characteristicValue:characteristicValue )
+            
+        case .deviceInformation_firmwareRevision:
+            
+            return DeviceInformationFirmwareRevision.init( characteristicValue:characteristicValue )
+            
+        case .deviceInformation_manufacturerName:
+            
+            return DeviceInformationManufacturerName.init( characteristicValue:characteristicValue )
+            
+        case .deviceInformation_machineType:
+            
+            return DeviceInformationMachineType.init( characteristicValue:characteristicValue )
+            
+        case .rowing_generalStatus:
+            
+            return RowingGeneralStatus.init( characteristicValue:characteristicValue )
+            
+        case .rowing_additionalStatus1:
+            
+            return RowingAdditionalStatus1.init( characteristicValue:characteristicValue )
+            
+        case .rowing_additionalStatus2:
+            
+            return RowingAdditionalStatus2.init( characteristicValue:characteristicValue )
+            
+        case .rowing_statusSampleRate:
+            
+            return RowingStatusSampleRate.init( characteristicValue:characteristicValue )
+            
+        case .rowing_strokeData:
+            
+            return RowingStrokeData.init( characteristicValue:characteristicValue )
+        
+        case .rowing_additionalStrokeData:
+            
+            return RowingAdditionalStrokeData.init( characteristicValue:characteristicValue )
+            
+        case .rowing_intervalData:
+            
+            return RowingIntervalData.init( characteristicValue:characteristicValue )
+            
+        case .rowing_additionalIntervalData:
+            
+            return RowingAdditionalIntervalData.init( characteristicValue:characteristicValue )
+
+        case .rowing_workoutSummaryData:
+            
+            return RowingWorkoutSummaryData.init( characteristicValue:characteristicValue )
+            
+        case .rowing_additionalWorkoutSummaryData:
+            
+            return RowingAdditionalWorkoutSummaryData.init( characteristicValue:characteristicValue )
+            
+        case .rowing_heartRateBeltInformation:
+            
+            return RowingHeartRateBeltInformation.init( characteristicValue:characteristicValue )
+            
+        }
+    }
+    
 }

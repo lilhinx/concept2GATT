@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum IntervalType:Int,CustomStringConvertible
+public enum IntervalType:UInt8,C2Enum,CustomStringConvertible
 {
     case time = 0
     case distance
@@ -48,5 +48,14 @@ public enum IntervalType:Int,CustomStringConvertible
         case .none:
             return "None"
         }
+    }
+    
+    static func with( byte:UInt8 )->IntervalType
+    {
+        guard let value = IntervalType.init( rawValue:byte ) else
+        {
+            return .none
+        }
+        return value
     }
 }

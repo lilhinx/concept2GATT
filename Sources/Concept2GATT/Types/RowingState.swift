@@ -7,10 +7,11 @@
 
 import Foundation
 
-public enum RowingState:Int,CustomStringConvertible
+public enum RowingState:UInt8,C2Enum,CustomStringConvertible
 {
     case inactive = 0
     case active
+    case unknown = 255
   
     public var description:String
     {
@@ -20,6 +21,17 @@ public enum RowingState:Int,CustomStringConvertible
             return "Inactive"
         case .active:
             return "Active"
+        default:
+            return "unknown"
         }
+    }
+    
+    static func with( byte:UInt8 )->RowingState
+    {
+        guard let value = RowingState.init( rawValue:byte ) else
+        {
+            return .unknown
+        }
+        return value
     }
 }

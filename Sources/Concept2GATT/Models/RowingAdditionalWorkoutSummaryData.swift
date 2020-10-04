@@ -9,11 +9,11 @@ import Foundation
 
 public struct RowingAdditionalWorkoutSummaryData:CharacteristicModel
 {
-    static var dataLength:Int = 20
+    static var dataLength:Int = 19
     
     public let logEntryDate:C2Date
     public let logEntryTime:C2Time
-    public let intervalType:IntervalType?
+    public let intervalType:IntervalType
     public let intervalSize:C2IntervalSize
     public let intervalCount:C2IntervalCount
     public let totalCalories:C2CalorieCount
@@ -26,7 +26,7 @@ public struct RowingAdditionalWorkoutSummaryData:CharacteristicModel
     {
         logEntryDate = 0 // TODO: find date/time format
         logEntryTime = 0
-        intervalType = IntervalType( rawValue:Int( bytes[ 4 ] ) )
+        intervalType = IntervalType.with( byte:bytes[ 4 ] )
         intervalSize = C2IntervalSize( sizeWithLow:UInt16( bytes[ 5 ] ), high:UInt16( bytes[ 6 ] ) )
         intervalCount = C2IntervalCount( bytes[ 7 ] )
         totalCalories = C2CalorieCount( calorieCountWithLow:UInt16( bytes[ 8 ] ), high:UInt16( bytes[ 9 ] ) )

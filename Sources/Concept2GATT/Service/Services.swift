@@ -11,9 +11,7 @@ public enum Services:String,ServiceDefinition
 {
     case deviceDiscovery = "CE060000-43E5-11E4-916C-0800200C9A66"
     case deviceInformation = "CE060010-43E5-11E4-916C-0800200C9A66"
-    case control = "CE060020-43E5-11E4-916C-0800200C9A66"
     case rowing = "CE060030-43E5-11E4-916C-0800200C9A66"
-    
     
     public var service:CBUUID
     {
@@ -31,11 +29,6 @@ public enum Services:String,ServiceDefinition
                 Characteristics.deviceInformation_firmwareRevision.characteristic,
                 Characteristics.deviceInformation_manufacturerName.characteristic
             ]
-        case .control:
-            return [
-                Characteristics.control_response.characteristic,
-                Characteristics.control_command.characteristic
-            ]
         case .rowing:
             return [
                 Characteristics.rowing_generalStatus.characteristic,
@@ -48,8 +41,7 @@ public enum Services:String,ServiceDefinition
                 Characteristics.rowing_additionalIntervalData.characteristic,
                 Characteristics.rowing_workoutSummaryData.characteristic,
                 Characteristics.rowing_additionalWorkoutSummaryData.characteristic,
-                Characteristics.rowing_heartRateBeltInformation.characteristic,
-                Characteristics.rowing_mutliplexedInformation.characteristic
+                Characteristics.rowing_heartRateBeltInformation.characteristic
             ]
         default:
             return [ ]
@@ -64,8 +56,6 @@ public enum Services:String,ServiceDefinition
             return "Device Discovery"
         case .deviceInformation:
             return "Device Information"
-        case .control:
-            return "Control"
         case .rowing:
             return "Rowing"
         }

@@ -7,14 +7,15 @@
 
 import Foundation
 
-public enum StrokeState:Int,CustomStringConvertible
+public enum StrokeState:UInt8,C2Enum,CustomStringConvertible
 {
     case waitingForWheelToReachMinSpeed = 0
     case waitingForWheelToAccelerate
     case driving
     case dwellingAfterDrive
     case recovery
-  
+    case unknown = 255
+
     public var description:String
     {
         switch self
@@ -29,6 +30,17 @@ public enum StrokeState:Int,CustomStringConvertible
             return "Dwelling after drive"
         case .recovery:
             return "Recovery"
+        default:
+            return "unknown"
+        }
     }
-  }
+    
+    static func with( byte:UInt8 )->StrokeState
+    {
+        guard let value = StrokeState.init( rawValue:byte ) else
+        {
+            return .unknown
+        }
+        return value
+    }
 }

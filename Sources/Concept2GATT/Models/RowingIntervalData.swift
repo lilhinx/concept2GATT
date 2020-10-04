@@ -17,7 +17,7 @@ public struct RowingIntervalData:CharacteristicModel
     public let intervalDistance:C2Distance
     public let intervalRestTime:C2TimeInterval
     public let intervalRestDistance:C2Distance
-    public let intervalType:IntervalType?
+    public let intervalType:IntervalType
     public let intervalNumber:C2IntervalCount
     
     init( bytes:[UInt8] )
@@ -28,7 +28,7 @@ public struct RowingIntervalData:CharacteristicModel
         intervalDistance = C2Distance( intervalDistanceWithLow:UInt32( bytes[ 9 ] ), mid:UInt32( bytes[ 10 ] ), high:UInt32( bytes[ 11 ] ) )
         intervalRestTime = C2TimeInterval( restTimeWithLow:UInt16( bytes[ 12 ] ), high:UInt16( bytes[ 13 ] ) )
         intervalRestDistance = C2Distance( restDistanceWithLow:UInt16( bytes[ 14 ] ), high:UInt16( bytes[ 15 ] ) )
-        intervalType = IntervalType( rawValue:Int( bytes[ 16 ] ) )
+        intervalType = IntervalType.with( byte:bytes[ 16 ] )
         intervalNumber = C2IntervalCount( bytes[ 17 ] )
     }
     

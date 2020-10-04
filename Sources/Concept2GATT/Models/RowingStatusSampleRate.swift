@@ -11,10 +11,10 @@ public struct RowingStatusSampleRate:CharacteristicModel
 {
     static let dataLength:Int = 1
     
-    let sampleRate:RowingStatusSampleRateType?
+    let sampleRate:RowingStatusSampleRateType
     
     init( bytes:[UInt8] )
     {
-        sampleRate = RowingStatusSampleRateType( rawValue:bytes[ 0 ] )
+        sampleRate = RowingStatusSampleRateType.with( byte:bytes[ 0 ] )
     }
 }

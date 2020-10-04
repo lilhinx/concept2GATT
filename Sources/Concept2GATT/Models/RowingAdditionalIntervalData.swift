@@ -9,7 +9,7 @@ import Foundation
 
 public struct RowingAdditionalIntervalData:CharacteristicModel
 {
-    static let dataLength:Int = 18
+    static let dataLength:Int = 19
     
     public let elapsedTime:C2TimeInterval
     public let intervalAverageStrokeRate:C2StrokeRate
@@ -22,6 +22,7 @@ public struct RowingAdditionalIntervalData:CharacteristicModel
     public let intervalPower:C2Power
     public let splitAverageDragFactor:C2DragFactor
     public let intervalNumber:C2IntervalCount
+    public let machineType:ErgMachineType
     
     init( bytes:[UInt8] )
     {
@@ -36,6 +37,7 @@ public struct RowingAdditionalIntervalData:CharacteristicModel
         intervalPower = C2Power( powerWithLow:UInt16( bytes[ 14 ] ), high:UInt16( bytes[ 15 ] ) )
         splitAverageDragFactor = C2DragFactor( bytes[ 16 ] )
         intervalNumber = C2IntervalCount( bytes[ 17 ] )
+        machineType = ErgMachineType.with( byte:bytes[ 18 ] )
     }
     
     

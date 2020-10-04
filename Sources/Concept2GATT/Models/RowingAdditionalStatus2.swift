@@ -9,10 +9,11 @@ import Foundation
 
 public struct RowingAdditionalStatus2:CharacteristicModel
 {
-    static let dataLength:Int = 18
+    static let dataLength:Int = 20
     
     public let elapsedTime:C2TimeInterval
     public let intervalCount:C2IntervalCount
+    public let averagePower:C2Power
     public let totalCalories:C2CalorieCount
     public let intervalAveragePace:C2Pace
     public let intervalAveragePower:C2Power
@@ -24,12 +25,13 @@ public struct RowingAdditionalStatus2:CharacteristicModel
     {
         elapsedTime = C2TimeInterval( timeWithLow:UInt32( bytes[ 0 ] ), mid:UInt32( bytes[ 1 ] ), high:UInt32( bytes[ 2 ] ) )
         intervalCount = C2IntervalCount( bytes[ 3 ] )
-        totalCalories = C2CalorieCount( calorieCountWithLow:UInt16( bytes[ 4 ] ), high:UInt16( bytes[ 5 ] ) )
-        intervalAveragePace = C2Pace( paceWithLow:UInt16( bytes[ 6 ] ), high:UInt16( bytes[ 7 ] ) )
-        intervalAveragePower = C2Power( powerWithLow:UInt16( bytes[ 8 ] ), high:UInt16( bytes[ 9 ] ) )
-        intervalAverageCalories = C2CalorieCount( calorieCountWithLow:UInt16( bytes[ 10 ] ), high:UInt16( bytes[ 11 ] ) )
-        lastSplitTime = C2TimeInterval( timeWithLow:UInt32( bytes[ 12 ] ), mid:UInt32( bytes[ 13 ] ), high:UInt32( bytes[ 14 ] ) )
-        lastSplitDistance = C2Distance( distanceWithLow:UInt32( bytes[ 15 ] ), mid:UInt32( bytes[ 16 ] ), high:UInt32( bytes[ 17 ] ) )
+        averagePower = C2Power( powerWithLow:UInt16( bytes[ 4 ] ), high:UInt16( bytes[ 5 ] ) )
+        totalCalories = C2CalorieCount( calorieCountWithLow:UInt16( bytes[ 6 ] ), high:UInt16( bytes[ 7 ] ) )
+        intervalAveragePace = C2Pace( paceWithLow:UInt16( bytes[ 8 ] ), high:UInt16( bytes[ 9 ] ) )
+        intervalAveragePower = C2Power( powerWithLow:UInt16( bytes[ 10 ] ), high:UInt16( bytes[ 11 ] ) )
+        intervalAverageCalories = C2CalorieCount( calorieCountWithLow:UInt16( bytes[ 12 ] ), high:UInt16( bytes[ 13 ] ) )
+        lastSplitTime = C2TimeInterval( timeWithLow:UInt32( bytes[ 14 ] ), mid:UInt32( bytes[ 15 ] ), high:UInt32( bytes[ 16 ] ) )
+        lastSplitDistance = C2Distance( distanceWithLow:UInt32( bytes[ 17 ] ), mid:UInt32( bytes[ 18 ] ), high:UInt32( bytes[ 19 ] ) )
     }
     
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum WorkoutType:Int,CustomStringConvertible
+public enum WorkoutType:UInt8,C2Enum,CustomStringConvertible
 {
     case justRowNoSplits = 0
     case justRowSplits
@@ -21,6 +21,8 @@ public enum WorkoutType:Int,CustomStringConvertible
     case variableUndefinedRestInterval
     case fixedCalorie
     case fixedWattMinutes
+    case fixedCaloriesInterval
+    case unknown = 255
   
     public var description:String
     {
@@ -50,6 +52,19 @@ public enum WorkoutType:Int,CustomStringConvertible
             return "Fixed calorie"
         case .fixedWattMinutes:
             return "Fixed watt-minutes"
+        case .fixedCaloriesInterval:
+            return "Fixed calories-interval"
+        default:
+            return "unknown"
         }
+    }
+    
+    static func with( byte:UInt8 )->WorkoutType
+    {
+        guard let value = WorkoutType.init( rawValue:byte ) else
+        {
+            return .unknown
+        }
+        return value
     }
 }
