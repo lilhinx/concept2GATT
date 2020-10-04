@@ -1,12 +1,12 @@
 import XCTest
 @testable import Concept2GATT
 
-final class Concept2GATTTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(Concept2GATT().text, "Hello, World!")
+final class Concept2GATTTests:XCTestCase
+{
+    func testExample( )
+    {
+       
+        
     }
 
     static var allTests = [

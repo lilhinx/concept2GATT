@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  RowingWorkoutSummaryData.swift
 //  
 //
 //  Created by Chris Hinkle on 10/3/20.

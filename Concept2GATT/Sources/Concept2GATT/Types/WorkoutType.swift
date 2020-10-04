@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  WorkoutType.swift
 //  
 //
 //  Created by Chris Hinkle on 10/3/20.
