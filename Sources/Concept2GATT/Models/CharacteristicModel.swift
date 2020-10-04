@@ -15,11 +15,16 @@ public protocol CharacteristicModel
 
 extension CharacteristicModel
 {
-    init( characteristicValue:Data )
+    public init( characteristicValue:Data )
     {
         var bytes:[UInt8] = Array( repeating:0, count:Self.dataLength );
         ( characteristicValue as NSData ).getBytes( &bytes, length:Self.dataLength )
         self.init( bytes:bytes )
+    }
+    
+    public static func empty( )->Self
+    {
+        return Self.init( bytes:[UInt8].init( repeating:0, count:dataLength ) )
     }
 }
 
