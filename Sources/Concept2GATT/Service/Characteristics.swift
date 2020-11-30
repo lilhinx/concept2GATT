@@ -6,6 +6,7 @@
 //
 
 import CoreBluetooth
+import CBGATT
 
 public enum Characteristics:String,CharacteristicDefinition
 {

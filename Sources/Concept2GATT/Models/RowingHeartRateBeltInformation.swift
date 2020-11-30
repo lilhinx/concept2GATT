@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CBGATT
 
 public struct RowingHeartRateBeltInformation:CharacteristicModel
 {

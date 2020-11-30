@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CBGATT",
+        "repositoryURL": "https://github.com/lilhinx/CBGATT.git",
+        "state": {
+          "branch": "main",
+          "revision": "8efbf6c63ee7f75b03e1dc088253fe8ff732c538",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
