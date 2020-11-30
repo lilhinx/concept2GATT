@@ -8,7 +8,7 @@
 import CoreBluetooth
 import CBGATT
 
-public enum Characteristics:String,CharacteristicDefinition
+public enum Concept2Characteristics:String,CharacteristicDefinition
 {
     case deviceInformation_modelNumber          = "CE060011-43E5-11E4-916C-0800200C9A66"
     case deviceInformation_serialNumber         = "CE060012-43E5-11E4-916C-0800200C9A66"
