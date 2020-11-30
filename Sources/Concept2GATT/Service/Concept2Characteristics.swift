@@ -31,11 +31,6 @@ public enum Concept2Characteristics:String,CharacteristicDefinition
     case rowing_heartRateBeltInformation        = "CE06003B-43E5-11E4-916C-0800200C9A66"
 
     
-    public var characteristic:CBUUID
-    {
-        return CBUUID.init( string:rawValue )
-    }
-    
     public var description:String
     {
         switch self

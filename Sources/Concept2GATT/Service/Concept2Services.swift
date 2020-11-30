@@ -14,11 +14,6 @@ public enum Concept2Services:String,ServiceDefinition
     case deviceInformation = "CE060010-43E5-11E4-916C-0800200C9A66"
     case rowing = "CE060030-43E5-11E4-916C-0800200C9A66"
     
-    public var service:CBUUID
-    {
-        return CBUUID.init( string:rawValue )
-    }
-    
     public var characteristics:Set<CBUUID>
     {
         switch self
