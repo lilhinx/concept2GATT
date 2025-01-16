@@ -8,10 +8,9 @@
 import Foundation
 import CBGATT
 
-public struct RowingWorkoutSummaryData:CharacteristicModel
+public struct RowingWorkoutSummaryData:RawBytesDecodable
 {
     public static let dataLength:Int = 20
-    
     public let logEntryDate:C2Date
     public let logEntryTime:C2Time
     public let elapsedTime:C2TimeInterval
@@ -25,6 +24,11 @@ public struct RowingWorkoutSummaryData:CharacteristicModel
     public let recoveryHeartRate:C2HeartRate
     public let workoutType:WorkoutType
     public let averagePace:C2Pace
+    
+    public init( from decoder: any Decoder ) throws
+    {
+        throw Concept2Decoder.Problem.notSupported
+    }
     
     public init( bytes:[UInt8] )
     {
@@ -42,6 +46,5 @@ public struct RowingWorkoutSummaryData:CharacteristicModel
         workoutType = WorkoutType.with( byte:bytes[ 17 ] )
         averagePace = C2Pace(paceWithLow:UInt16( bytes[ 18 ] ), high:UInt16( bytes[ 19 ] ) )
     }
-    
-    
 }
+

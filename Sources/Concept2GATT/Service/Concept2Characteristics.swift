@@ -8,6 +8,8 @@
 import CoreBluetooth
 import CBGATT
 
+/*
+
 public enum Concept2Characteristics:String,CharacteristicDefinition
 {
     case deviceInformation_modelNumber          = "CE060011-43E5-11E4-916C-0800200C9A66"
@@ -72,7 +74,7 @@ public enum Concept2Characteristics:String,CharacteristicDefinition
         }
     }
     
-    public func model( with characteristicValue:Data )->CharacteristicModel
+    public func model( with characteristicValue:Data )->CharacteristicDefinition
     {
         switch self
         {
@@ -149,3 +151,5 @@ public enum Concept2Characteristics:String,CharacteristicDefinition
     }
     
 }
+
+*/

@@ -8,13 +8,19 @@
 import Foundation
 import CBGATT
 
-public struct RowingStatusSampleRate:CharacteristicModel
+public struct RowingStatusSampleRate:RawBytesDecodable
 {
     public static let dataLength:Int = 1
-    
     public let sampleRate:RowingStatusSampleRateType
-    public init( bytes:[UInt8] )
+    
+    public init( from decoder: any Decoder ) throws
+    {
+        throw Concept2Decoder.Problem.notSupported
+    }
+    
+    init( bytes:[UInt8] )
     {
         sampleRate = RowingStatusSampleRateType.with( byte:bytes[ 0 ] )
     }
 }
+

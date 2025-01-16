@@ -8,7 +8,7 @@
 import Foundation
 import CBGATT
 
-public struct RowingGeneralStatus:CharacteristicModel
+public struct RowingGeneralStatus:RawBytesDecodable
 {
     public static let dataLength:Int = 19
     
@@ -24,6 +24,11 @@ public struct RowingGeneralStatus:CharacteristicModel
     public let workoutDurationType:WorkoutDurationType
     public let dragFactor:C2DragFactor
     
+    public init( from decoder: any Decoder ) throws
+    {
+        throw Concept2Decoder.Problem.notSupported
+    }
+    
     public init( bytes:[UInt8] )
     {
         elapsedTime = C2TimeInterval( timeWithLow:UInt32( bytes[ 0 ] ), mid:UInt32( bytes[ 1 ] ), high:UInt32( bytes[ 2 ] ) )
@@ -38,6 +43,4 @@ public struct RowingGeneralStatus:CharacteristicModel
         workoutDurationType = WorkoutDurationType.with( byte:bytes[ 17 ] )
         dragFactor = C2DragFactor( bytes[ 18 ] )
     }
-    
-
 }

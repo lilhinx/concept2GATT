@@ -8,7 +8,7 @@
 import Foundation
 import CBGATT
 
-public struct RowingIntervalData:CharacteristicModel
+public struct RowingIntervalData:RawBytesDecodable
 {
     public static let dataLength:Int = 18
     
@@ -21,6 +21,11 @@ public struct RowingIntervalData:CharacteristicModel
     public let intervalType:IntervalType
     public let intervalNumber:C2IntervalCount
     
+    public init( from decoder: any Decoder ) throws
+    {
+        throw Concept2Decoder.Problem.notSupported
+    }
+    
     public init( bytes:[UInt8] )
     {
         elapsedTime = C2TimeInterval( timeWithLow:UInt32( bytes[ 0 ] ), mid:UInt32( bytes[ 1 ] ), high:UInt32( bytes[ 2 ] ) )
@@ -32,6 +37,5 @@ public struct RowingIntervalData:CharacteristicModel
         intervalType = IntervalType.with( byte:bytes[ 16 ] )
         intervalNumber = C2IntervalCount( bytes[ 17 ] )
     }
-    
-    
 }
+

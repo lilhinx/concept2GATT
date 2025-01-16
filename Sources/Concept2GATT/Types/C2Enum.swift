@@ -8,7 +8,7 @@
 import Foundation
 
 
-protocol C2Enum
+protocol C2Enum:Codable
 {
     static func with( byte:UInt8 )->Self
 }

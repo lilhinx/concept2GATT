@@ -8,7 +8,7 @@
 import Foundation
 import CBGATT
 
-public struct RowingAdditionalWorkoutSummaryData:CharacteristicModel
+public struct RowingAdditionalWorkoutSummaryData:RawBytesDecodable
 {
     public static var dataLength:Int = 19
     
@@ -23,6 +23,11 @@ public struct RowingAdditionalWorkoutSummaryData:CharacteristicModel
     public let intervalRestTime:C2TimeInterval
     public let averageCalories:C2CalorieCount
     
+    public init( from decoder: any Decoder ) throws
+    {
+        throw Concept2Decoder.Problem.notSupported
+    }
+    
     public init( bytes:[UInt8] )
     {
         logEntryDate = 0 // TODO: find date/time format
@@ -36,6 +41,4 @@ public struct RowingAdditionalWorkoutSummaryData:CharacteristicModel
         intervalRestTime = C2TimeInterval( restTimeWithLow:UInt16( bytes[ 15 ] ), high:UInt16( bytes[ 16 ] ) )
         averageCalories = C2CalorieCount( calorieCountWithLow:UInt16( bytes[ 17 ] ), high:UInt16( bytes[ 18 ] ) )
     }
-    
-    
 }

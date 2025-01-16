@@ -8,10 +8,9 @@
 import Foundation
 import CBGATT
 
-public struct RowingAdditionalStatus2:CharacteristicModel
+public struct RowingAdditionalStatus2:RawBytesDecodable
 {
     public static let dataLength:Int = 20
-    
     public let elapsedTime:C2TimeInterval
     public let intervalCount:C2IntervalCount
     public let averagePower:C2Power
@@ -22,7 +21,15 @@ public struct RowingAdditionalStatus2:CharacteristicModel
     public let lastSplitTime:C2TimeInterval
     public let lastSplitDistance:C2Distance
     
-    public init( bytes:[UInt8] )
+    public init( from decoder: any Decoder ) throws
+    {
+        throw Concept2Decoder.Problem.notSupported
+    }
+}
+
+extension RowingAdditionalStatus2
+{
+    init( bytes:[UInt8] )
     {
         elapsedTime = C2TimeInterval( timeWithLow:UInt32( bytes[ 0 ] ), mid:UInt32( bytes[ 1 ] ), high:UInt32( bytes[ 2 ] ) )
         intervalCount = C2IntervalCount( bytes[ 3 ] )
@@ -34,6 +41,4 @@ public struct RowingAdditionalStatus2:CharacteristicModel
         lastSplitTime = C2TimeInterval( timeWithLow:UInt32( bytes[ 14 ] ), mid:UInt32( bytes[ 15 ] ), high:UInt32( bytes[ 16 ] ) )
         lastSplitDistance = C2Distance( distanceWithLow:UInt32( bytes[ 17 ] ), mid:UInt32( bytes[ 18 ] ), high:UInt32( bytes[ 19 ] ) )
     }
-    
-    
 }

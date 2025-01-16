@@ -8,10 +8,9 @@
 import Foundation
 import CBGATT
 
-public struct RowingAdditionalIntervalData:CharacteristicModel
+public struct RowingAdditionalIntervalData:RawBytesDecodable
 {
     public static let dataLength:Int = 19
-    
     public let elapsedTime:C2TimeInterval
     public let intervalAverageStrokeRate:C2StrokeRate
     public let intervalWorkHeartrate:C2HeartRate
@@ -25,7 +24,16 @@ public struct RowingAdditionalIntervalData:CharacteristicModel
     public let intervalNumber:C2IntervalCount
     public let machineType:ErgMachineType
     
-    public init( bytes:[UInt8] )
+    
+    public init( from decoder: any Decoder ) throws
+    {
+        throw Concept2Decoder.Problem.notSupported
+    }
+}
+
+extension RowingAdditionalIntervalData
+{
+    init( bytes:[UInt8] )
     {
         elapsedTime = C2TimeInterval( timeWithLow:UInt32( bytes[ 0 ] ), mid:UInt32( bytes[ 1 ] ), high:UInt32( bytes[2] ) )
         intervalAverageStrokeRate = C2StrokeRate( bytes[ 3 ] )
@@ -40,6 +48,5 @@ public struct RowingAdditionalIntervalData:CharacteristicModel
         intervalNumber = C2IntervalCount( bytes[ 17 ] )
         machineType = ErgMachineType.with( byte:bytes[ 18 ] )
     }
-    
-    
 }
+

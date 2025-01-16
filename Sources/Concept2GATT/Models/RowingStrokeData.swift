@@ -8,7 +8,7 @@
 import Foundation
 import CBGATT
 
-public struct RowingStrokeData:CharacteristicModel
+public struct RowingStrokeData:RawBytesDecodable
 {
     public static let dataLength:Int = 20
     
@@ -23,7 +23,12 @@ public struct RowingStrokeData:CharacteristicModel
     public let workPerStroke:C2Work
     public let strokeCount:C2StrokeCount
     
-    public init( bytes:[UInt8] )
+    public init( from decoder: any Decoder ) throws
+    {
+        throw Concept2Decoder.Problem.notSupported
+    }
+    
+    init( bytes:[UInt8] )
     {
         elapsedTime = C2TimeInterval( timeWithLow:UInt32( bytes[ 0 ] ), mid:UInt32( bytes[ 1 ] ), high:UInt32( bytes[ 2 ] ) )
         distance = C2Distance( distanceWithLow:UInt32( bytes[ 3 ] ), mid:UInt32( bytes[ 4 ] ), high:UInt32( bytes[ 5 ] ) )
@@ -39,3 +44,4 @@ public struct RowingStrokeData:CharacteristicModel
     
     
 }
+

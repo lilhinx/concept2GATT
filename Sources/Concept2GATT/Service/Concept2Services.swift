@@ -8,6 +8,7 @@
 import CoreBluetooth
 import CBGATT
 
+/*
 public enum Concept2Services:String,ServiceDefinition
 {
     case deviceDiscovery = "CE060000-43E5-11E4-916C-0800200C9A66"
@@ -58,3 +59,5 @@ public enum Concept2Services:String,ServiceDefinition
     }
     
 }
+
+*/

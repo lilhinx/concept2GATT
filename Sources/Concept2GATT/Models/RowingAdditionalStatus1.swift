@@ -9,10 +9,9 @@ import Foundation
 import CBGATT
 
 
-public struct RowingAdditionalStatus1:CharacteristicModel
+public struct RowingAdditionalStatus1:RawBytesDecodable
 {
-    public static let dataLength:Int = 17
-    
+    public static let dataLength: Int = 17
     public let elapsedTime:C2TimeInterval
     public let speed:C2Speed
     public let strokeRate:C2StrokeRate
@@ -23,7 +22,15 @@ public struct RowingAdditionalStatus1:CharacteristicModel
     public let restTime:C2TimeInterval
     public let machineType:ErgMachineType?
     
-    public init( bytes:[UInt8] )
+    public init( from decoder: any Decoder ) throws
+    {
+        throw Concept2Decoder.Problem.notSupported
+    }
+}
+
+extension RowingAdditionalStatus1
+{
+    init( bytes:[UInt8] )
     {
         elapsedTime = C2TimeInterval( timeWithLow:UInt32( bytes[ 0 ] ), mid:UInt32( bytes[ 1 ] ), high:UInt32( bytes[ 2 ] ) )
         speed = C2Speed( speedWithLow:UInt16( bytes[ 3 ] ), high:UInt16( bytes[ 4 ] ) )
@@ -35,6 +42,4 @@ public struct RowingAdditionalStatus1:CharacteristicModel
         restTime = C2TimeInterval( timeWithLow:UInt32( bytes[ 13 ] ), mid:UInt32( bytes[ 14 ] ), high:UInt32( bytes[ 15 ] ) )
         machineType = ErgMachineType.with( byte:bytes[ 16 ] )
     }
-    
-    
 }
