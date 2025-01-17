@@ -14,28 +14,44 @@ protocol RawBytesDecodable:Decodable
     static var dataLength:Int{ get }
 }
 
+extension RawBytesDecodable
+{
+    public init( data:Data )
+    {
+        var bytes:[UInt8] = Array( repeating:0, count:Self.dataLength );
+        ( data as NSData ).getBytes( &bytes, length:Self.dataLength )
+        self.init( bytes:bytes )
+    }
+    
+    public static func empty( )->Self
+    {
+        return Self.init( bytes:[UInt8].init( repeating:0, count:dataLength ) )
+    }
+}
+
+
 public class Concept2Decoder:TopLevelDecoder
 {
-    public typealias Input = [UInt8]
+    public typealias Input = Data
     
     public enum Problem:Error
     {
         case notSupported
     }
     
-    public func decode<T>( _ type: T.Type, from:[UInt8] ) throws -> T where T : Decodable
+    public func decode<T>( _ type: T.Type, from:Input ) throws -> T where T : Decodable
     {
         switch type
         {
         case is String.Type:
             
-            return try String.init( bytes:from, encoding:.utf8 ) as! T
+            return String.init( bytes:from, encoding:.utf8 ) as! T
             
         default:
             
             if let rawBytesDecodable = type as? RawBytesDecodable.Type
             {
-                return rawBytesDecodable.init( bytes:from ) as! T
+                return rawBytesDecodable.init( data:from ) as! T
             }
             
             throw Problem.notSupported
@@ -44,3 +60,4 @@ public class Concept2Decoder:TopLevelDecoder
     
     
 }
+

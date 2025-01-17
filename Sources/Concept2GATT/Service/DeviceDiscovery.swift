@@ -18,3 +18,11 @@ public struct DeviceDiscovery:ServiceDefinition
     public var includedServices:Array<any ServiceDefinition> = [ ]
     public var characteristics: Array<any CharacteristicDefinition> = [  ]
 }
+
+extension DeviceDiscovery
+{
+    public var description: String
+    {
+        return "Device Discovery"
+    }
+}
